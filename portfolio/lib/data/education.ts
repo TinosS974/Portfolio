@@ -11,19 +11,19 @@ export const education: Education[] = [
   {
     id: "epitech",
     school: "Epitech Réunion",
-    degree: "Expert en Informatique — Bac+5",
+    degree: "Expert in Computer Science — Master's level (Bac+5)",
     period: "2020 – 2025",
     location: "Saint-André, La Réunion",
     description:
-      "Programmation bas/haut niveau orienté objet, développement web et mobile, architecture logicielle. Représentation de l'école lors d'événements et JPO.",
+      "Low/high-level object-oriented programming, web and mobile development, software architecture. School representative at events and open days.",
   },
   {
     id: "laval",
     school: "Université Laval",
-    degree: "Génie Logiciel et Informatique",
+    degree: "Software Engineering & Computer Science",
     period: "2023 – 2024",
     location: "Québec, Canada",
     description:
-      "Base de données SQL/NoSQL, développement et sécurité d'applications web, architecture logicielle, hébergement, déploiement, DevOps.",
+      "SQL/NoSQL databases, web application development and security, software architecture, hosting, deployment, DevOps.",
   },
 ];

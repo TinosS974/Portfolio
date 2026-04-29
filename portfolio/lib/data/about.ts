@@ -1,16 +1,16 @@
 export const about = {
-  name: "Raphael Salaverria",
+  name: "Raphaël Salaverria",
   initials: "RS",
-  title: "Developpeur Full Stack & Ingénieur IA",
+  title: "Full Stack Developer & AI Engineer",
   location: "Paris, France",
   origin: "La Réunion",
   availability: true,
   email: "raphael.salaverria@epitech.eu",
   bio: [
-    "Développeur fullstack diplômé d'Epitech cursus grande école, avec un an et demi d'expérience dans le digital à travers différentes missions.",
-    "J'ai commencé par une mission de développement web à la Fédération Réunionnaise de Tourisme, puis une mission fullstack au Département de la Réunion. Ensuite chez Zénith RH, mission fullstack sur laquelle j'avais également un enjeu fort de qualité — je gérais les phases de recette, les cas de test et la correction des anomalies avant chaque release.",
-    "Aujourd'hui je travaille en autonomie sur le journal La Gazelle en tant que lead développeur — je suis seul sur le projet donc je prends les décisions techniques de bout en bout.",
-    "Ce parcours m'a donné une vraie polyvalence : je sais construire, livrer et maintenir des applications dans des contextes très différents.",
+    "Fullstack developer graduated from Epitech (Master's level), with one and a half years of experience in digital through various missions.",
+    "I started with a web development mission at the Fédération Réunionnaise de Tourisme, then a fullstack mission at the Département de La Réunion. Then at Zénith RH, a fullstack mission where I also had a strong quality focus — I handled testing phases, test cases and bug fixes before each release.",
+    "Today I work independently on the journal La Gazelle as lead developer — I'm sole developer on the project, making all technical decisions end to end.",
+    "This path gave me real versatility: I know how to build, ship and maintain applications across very different contexts.",
   ],
   social: {
     github: "https://github.com/TinosS974/",
@@ -21,8 +21,8 @@ export const about = {
     backend: ["Node.js", "Django", "Python", "REST API"],
     database: ["PostgreSQL", "MongoDB", "SQL", "NoSQL"],
     devops: ["Git", "GitHub", "CI/CD", "Vercel", "Render"],
-    testing: ["Playwright", "E2E", "Tests fonctionnels"],
+    testing: ["Playwright", "E2E", "Functional testing"],
     methods: ["Agile SCRUM", "Jira", "Notion", "Confluence"],
   },
-  interests: ["Badminton", "Musique", "Développement durable"],
+  interests: ["Badminton", "Music", "Sustainable development"],
 };

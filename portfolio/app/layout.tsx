@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -10,21 +10,21 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Ton Prénom — Developer & Designer",
+  title: "Raphael Salaverria — Full Stack Developer",
   description:
-    "Portfolio of a Paris-based developer. Clean interfaces, fluid motion, sharp code.",
+    "Portfolio of a Paris-based fullstack developer. Clean interfaces, fluid motion, sharp code.",
   openGraph: {
-    title: "Ton Prénom — Developer & Designer",
-    description: "Paris-based developer. Clean. Sharp. Fluid.",
-    url: "https://tondomaine.dev",
-    siteName: "Portfolio",
+    title: "Raphael Salaverria — Full Stack Developer",
+    description: "Paris-based fullstack developer. Clean. Sharp. Fluid.",
+    url: "https://tondomaine.dev", // ← à remplacer quand tu as ton domaine
+    siteName: "Raphael Salaverria",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ton Prénom — Developer & Designer",
-    description: "Paris-based developer. Clean. Sharp. Fluid.",
+    title: "Raphael Salaverria — Full Stack Developer",
+    description: "Paris-based fullstack developer. Clean. Sharp. Fluid.",
   },
 };
 
@@ -36,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable}`}>
       <body className="bg-[#0a0a0a] text-[#f5f0e8] antialiased">
+        <Navbar />
         {children}
       </body>
     </html>
