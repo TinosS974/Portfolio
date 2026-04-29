@@ -63,4 +63,36 @@ export const experiences: Experience[] = [
     tags: ["Web", "UX", "Refonte", "Agile"],
     type: "internship",
   },
+  {
+    id: "federation-tourisme",
+    company: "Fédération Réunionnaise de Tourisme",
+    role: "Développeur Web",
+    period: "2021",
+    location: "La Réunion",
+    description:
+      "Stage — développement d'un outil de génération de bon de commande",
+    highlights: [
+      "Amélioration d'un processus manuel de génération de bons de commande",
+      "Développement web JS / phpmyadmin : formulaire de saisie, génération PDF, gestion des données",
+      "Livraison d'une solution clé en main utilisée quotidiennement par l'équipe",
+    ],
+    tags: ["JavaScript", "phpmyadmin", "PDF", "Gestion des données"],
+    type: "internship",
+  },
+  {
+    id: "gazelle",
+    company: "La Gazelle",
+    role: "Lead Développeur",
+    period: "février 2026 – Présent",
+    location: "Paris, France",
+    description:
+      "Mission bénévole — développement et maintenance d'une application de publication de contenu.",
+    highlights: [
+      "Lead technique : décisions d'architecture, choix technologiques, gestion de projet",
+      "Développement wordpress personnalisé : thèmes, plugins, intégrations API",
+      "Maintenance évolutive et corrective : gestion des incidents, mises à jour régulières",
+    ],
+    tags: ["WordPress", "Notion", "Lead"],
+    type: "project",
+  }
 ];
