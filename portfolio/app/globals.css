@@ -1,0 +1,37 @@
+@import "@fontsource-variable/cormorant";
+@tailwind utilities;
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --gold-muted: rgba(201, 168, 76, 0.15);
+  --bg: #0a0a0a;
+  --fg: #f5f0e8;
+  --muted: #555;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--gold-muted);
+  color: var(--gold-light);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
