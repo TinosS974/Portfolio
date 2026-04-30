@@ -86,6 +86,9 @@ export default function Home() {
                 <p className="text-[#555] text-[12px] leading-[1.9] tracking-[0.02em]">
                   {about.bio[1]}
                 </p>
+                <p className="text-[#555] text-[12px] leading-[1.9] tracking-[0.02em]">
+                  {about.bio[2]}
+                </p>
               </motion.div>
 
               <motion.div variants={fadeUp} className="flex items-center gap-5 flex-wrap shrink-0">
