@@ -13,7 +13,6 @@ export default function Home() {
     <>
       <main className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
 
-        {/* Ligne dorée top */}
         <motion.div
           variants={expandLine}
           initial="hidden"
@@ -30,7 +29,6 @@ export default function Home() {
           animate="visible"
           className="relative z-10 min-h-screen px-6 md:px-16 lg:px-24 pt-32 pb-16 flex flex-col justify-between"
         >
-          {/* Bloc haut */}
           <div>
             {/* Eyebrow */}
             <motion.div variants={slideLeft} className="flex items-center gap-3 mb-16">
@@ -40,7 +38,7 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* Nom + titre */}
+            {/* Nom + stack */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
               <motion.div variants={fadeUp}>
                 <h1 className="font-[Cormorant_Variable] text-[72px] md:text-[96px] lg:text-[120px] leading-[0.88] font-light text-[#f5f0e8]">
@@ -50,11 +48,7 @@ export default function Home() {
                 </h1>
               </motion.div>
 
-              {/* Stack techs — alignée à droite en bas du nom */}
-              <motion.div
-                variants={fadeUp}
-                className="lg:text-right pb-2"
-              >
+              <motion.div variants={fadeUp} className="lg:text-right pb-2 shrink-0 max-w-xs">
                 {[
                   { label: "Next.js", gold: true },
                   { label: "TypeScript", gold: false },
@@ -83,7 +77,7 @@ export default function Home() {
               }}
             />
 
-            {/* Bio + CTA sur la même ligne */}
+            {/* Bio + CTA */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
               <motion.div variants={fadeUp} className="max-w-lg">
                 <p className="text-[#c8c0b0] text-[14px] leading-[1.9] tracking-[0.02em] mb-3">
@@ -111,7 +105,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bas de page — interests + status */}
+          {/* Bas — interests + status */}
           <motion.div
             variants={fadeIn}
             className="flex items-center justify-between flex-wrap gap-4 pt-10"
