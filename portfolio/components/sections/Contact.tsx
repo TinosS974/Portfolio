@@ -47,9 +47,9 @@ export default function Contact() {
       </motion.div>
 
       {/* Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-end">
 
-        {/* Gauche — email + socials + status */}
+        {/* Gauche */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -58,15 +58,15 @@ export default function Contact() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[#555] text-[13px] leading-[1.9] tracking-[0.02em] max-w-sm"
+            className="text-[#888] text-[13px] leading-[1.9] tracking-[0.02em] max-w-sm"
           >
             Open to freelance missions, full-time roles or one-off collaborations.
             Feel free to reach out.
           </motion.p>
 
-          {/* Email block */}
+          {/* Email */}
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#333]">
+            <span className="text-[10px] tracking-[0.22em] uppercase text-[#555]">
               Email
             </span>
             <div className="flex items-center gap-4 flex-wrap">
@@ -75,7 +75,7 @@ export default function Contact() {
               </span>
               <button
                 onClick={handleCopyEmail}
-                className="text-[10px] tracking-[0.2em] uppercase border border-[#1e1e1e] px-3 py-1.5 text-[#444] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
+                className="text-[10px] tracking-[0.2em] uppercase border border-[#2a2a2a] px-3 py-1.5 text-[#666] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
               >
                 {copied ? "Copied ✓" : "Copy"}
               </button>
@@ -85,7 +85,7 @@ export default function Contact() {
           {/* Socials */}
           <motion.div
             variants={staggerContainer}
-            className="flex flex-col border border-[#141414]"
+            className="flex flex-col border border-[#1e1e1e]"
           >
             {[
               { label: "LinkedIn", href: about.social.linkedin },
@@ -97,12 +97,12 @@ export default function Contact() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between px-5 py-4 border-b border-[#141414] last:border-b-0 group hover:bg-[#0f0f0f] transition-colors duration-300"
+                    className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e1e] last:border-b-0 group hover:bg-[#0f0f0f] transition-colors duration-300"
                   >
-                    <span className="text-[11px] tracking-[0.2em] uppercase text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    <span className="text-[11px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
                       {link.label}
                     </span>
-                    <span className="text-[#333] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    <span className="text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300">
                       ↗
                     </span>
                   </Link>
@@ -111,50 +111,92 @@ export default function Contact() {
             )}
           </motion.div>
 
+          {/* Status */}
           <motion.div variants={fadeUp} className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#444]">
+            <span className="text-[10px] tracking-[0.22em] uppercase text-[#666]">
               Available · Paris, France · Remote friendly
             </span>
           </motion.div>
         </motion.div>
 
-        {/* Droite — citation alignée sur le bloc socials */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex flex-col"
-        >
-          {/* Spacer qui pousse la citation au niveau du bloc email/socials */}
-          <div className="flex flex-col gap-8">
-            {/* Espace équivalent au paragraphe intro gauche */}
-            <div className="text-[13px] leading-[1.9] opacity-0 select-none pointer-events-none">
-              Open to freelance missions, full-time roles or one-off collaborations.
-              Feel free to reach out.
-            </div>
+        {/* Droite — citation avec lumière orbitale */}
+<motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  animate={inView ? "visible" : "hidden"}
+  className="flex flex-col justify-end"
+>
+  {/* Citation */}
+  <motion.div variants={fadeUp} className="flex flex-col">
+    <motion.div
+      variants={expandLine}
+      className="w-12 h-px bg-[#c9a84c] mb-8"
+    />
 
-            {/* Espace équivalent au bloc email gauche */}
-            <div className="opacity-0 select-none pointer-events-none flex flex-col gap-2">
-              <span className="text-[10px]">Email</span>
-              <span className="text-2xl">placeholder</span>
-            </div>
+    <div className="relative inline-block">
+      {/* Halo principal */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          width: "120px",
+          height: "120px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(201,168,76,0.6) 0%, transparent 70%)",
+          filter: "blur(30px)",
+          top: "50%",
+          left: "50%",
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        animate={{
+          x: ["0%", "80%", "60%", "-60%", "-80%", "0%"],
+          y: ["0%", "60%", "-80%", "-60%", "40%", "0%"],
+          opacity: [0.6, 0.9, 0.5, 0.8, 0.6, 0.6],
+          scale: [1, 1.3, 0.9, 1.2, 1, 1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-            {/* Citation — alignée avec le bloc socials */}
-            <motion.div variants={fadeUp} className="flex flex-col">
-              <motion.div
-                variants={expandLine}
-                className="w-12 h-px bg-[#c9a84c] mb-8"
-              />
-              <motion.p
-                variants={fadeUp}
-                className="font-[Cormorant_Variable] text-[36px] md:text-[48px] font-light italic text-[#222] leading-[1.1]"
-              >
-                Build clean.<br />Ship fast.<br />Care about the details.
-              </motion.p>
-            </motion.div>
-          </div>
-        </motion.div>
+      {/* Halo secondaire */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          width: "80px",
+          height: "80px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(232,213,163,0.4) 0%, transparent 70%)",
+          filter: "blur(20px)",
+          top: "50%",
+          left: "50%",
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        animate={{
+          x: ["0%", "-80%", "-60%", "60%", "80%", "0%"],
+          y: ["0%", "-60%", "80%", "60%", "-40%", "0%"],
+          opacity: [0.4, 0.7, 0.3, 0.6, 0.4, 0.4],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+
+      {/* Texte */}
+      <motion.p
+        variants={fadeUp}
+        className="font-[Cormorant_Variable] text-[36px] md:text-[48px] font-light italic leading-[1.1] relative z-10"
+        style={{
+          color: "#c9a84c",
+          textShadow: "0 0 20px rgba(201,168,76,0.3)",
+        }}
+      >
+        Build clean.<br />
+        Ship fast.<br />
+        Care about<br />
+        the details.
+      </motion.p>
+    </div>
+  </motion.div>
+</motion.div>
       </div>
 
       {/* Footer */}
@@ -166,21 +208,20 @@ export default function Contact() {
       >
         <motion.span
           variants={fadeIn}
-          className="font-[Cormorant_Variable] text-[#2a2a2a] text-lg tracking-[0.14em] uppercase"
+          className="font-[Cormorant_Variable] text-[#555] text-lg tracking-[0.14em] uppercase"
         >
           {about.initials}
-        </motion.span>
-
+        </motion.span>            
         <motion.span
           variants={fadeIn}
-          className="text-[10px] tracking-[0.18em] uppercase text-[#2a2a2a]"
+          className="text-[10px] tracking-[0.18em] uppercase text-[#555]"
         >
           © {new Date().getFullYear()} {about.name}
         </motion.span>
 
         <motion.span
           variants={fadeIn}
-          className="text-[10px] tracking-[0.18em] uppercase text-[#2a2a2a]"
+          className="text-[10px] tracking-[0.18em] uppercase text-[#555]"
         >
           Paris · La Réunion
         </motion.span>
