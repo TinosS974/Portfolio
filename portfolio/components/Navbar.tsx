@@ -47,7 +47,7 @@ export default function Navbar() {
           {/* Logo / Initiales */}
           
             <a href="#"
-            className="font-[Cormorant_Variable] text-[#c9a84c] text-lg tracking-[0.14em] uppercase font-light hover:opacity-70 transition-opacity duration-300"
+            className="text-[#c9a84c] text-lg tracking-[0.14em] uppercase font-light hover:opacity-70 transition-opacity duration-300"
           >
             {about.initials}
           </a>
@@ -118,7 +118,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="font-[Cormorant_Variable] text-5xl font-light text-[#f5f0e8] tracking-wide hover:text-[#c9a84c] transition-colors duration-300"
+                className="text-5xl font-light text-[#f5f0e8] tracking-wide hover:text-[#c9a84c] transition-colors duration-300"
               >
                 {link.label}
               </motion.a>

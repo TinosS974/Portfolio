@@ -41,7 +41,7 @@ export default function Home() {
             {/* Nom + stack */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
               <motion.div variants={fadeUp}>
-                <h1 className="font-[Cormorant_Variable] text-[72px] md:text-[96px] lg:text-[120px] leading-[0.88] font-light text-[#f5f0e8]">
+                <h1 className="text-[72px] md:text-[96px] lg:text-[120px] leading-[0.88] font-black text-[#f5f0e8]">
                   {about.name.split(" ")[0]}
                   <br />
                   <span className="italic text-[#c9a84c]">{about.name.split(" ")[1]}</span>
@@ -58,7 +58,7 @@ export default function Home() {
                 ].map((tech) => (
                   <p
                     key={tech.label}
-                    className={`font-[Cormorant_Variable] text-[22px] md:text-[26px] leading-[1.4] font-light ${
+                    className={`text-[22px] md:text-[26px] leading-[1.4] font-light ${
                       tech.gold ? "text-[#c9a84c]" : "text-[#2e2e2e]"
                     }`}
                   >

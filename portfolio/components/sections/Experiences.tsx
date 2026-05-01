@@ -38,7 +38,7 @@ export default function Experiences() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-[Cormorant_Variable] text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
+            className="text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
           >
             Experience
           </motion.h2>
@@ -75,7 +75,7 @@ export default function Experiences() {
                   </span>
 
                   <div>
-                    <h3 className="font-[Cormorant_Variable] text-xl md:text-2xl font-light text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    <h3 className="text-xl md:text-2xl font-light text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors duration-300">
                       {exp.role}
                     </h3>
                     <div className="flex items-center gap-2 mt-1">
@@ -139,7 +139,7 @@ export default function Experiences() {
                 className="group border border-[#1e1e1e] hover:border-[#c9a84c22] transition-all duration-500 p-4 flex flex-col gap-2.5 mb-3 last:mb-0"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h4 className="font-[Cormorant_Variable] text-lg font-light text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors duration-300 leading-snug">
+                  <h4 className="text-lg font-light text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors duration-300 leading-snug">
                     {edu.school}
                   </h4>
                   <span className="text-[10px] tracking-[0.15em] text-[#666] uppercase shrink-0 mt-1">

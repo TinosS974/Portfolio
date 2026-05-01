@@ -39,7 +39,7 @@ export default function Contact() {
 
         <motion.h2
           variants={fadeUp}
-          className="font-[Cormorant_Variable] text-[52px] md:text-[72px] font-light leading-[0.92] text-[#f5f0e8]"
+          className="text-[52px] md:text-[72px] font-light leading-[0.92] text-[#f5f0e8]"
         >
           Let&apos;s work<br />
           <span className="italic text-[#c9a84c]">together.</span>
@@ -70,7 +70,7 @@ export default function Contact() {
               Email
             </span>
             <div className="flex items-center gap-4 flex-wrap">
-              <span className="font-[Cormorant_Variable] text-2xl font-light text-[#f5f0e8]">
+              <span className="text-2xl font-light text-[#f5f0e8]">
                 {about.email}
               </span>
               <button
@@ -183,7 +183,7 @@ export default function Contact() {
       {/* Texte */}
       <motion.p
         variants={fadeUp}
-        className="font-[Cormorant_Variable] text-[36px] md:text-[48px] font-light italic leading-[1.1] relative z-10"
+        className="text-[36px] md:text-[48px] font-light italic leading-[1.1] relative z-10"
         style={{
           color: "#c9a84c",
           textShadow: "0 0 20px rgba(201,168,76,0.3)",
@@ -208,7 +208,7 @@ export default function Contact() {
       >
         <motion.span
           variants={fadeIn}
-          className="font-[Cormorant_Variable] text-[#555] text-lg tracking-[0.14em] uppercase"
+          className="text-[#555] text-lg tracking-[0.14em] uppercase"
         >
           {about.initials}
         </motion.span>            

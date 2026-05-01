@@ -52,10 +52,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Top row */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1.5">
-          <span className="font-[Cormorant_Variable] text-[#333] text-4xl font-light leading-none select-none">
+          <span className="text-[#333] text-4xl font-light leading-none select-none">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 className="font-[Cormorant_Variable] text-[#f5f0e8] text-2xl md:text-3xl font-light group-hover:text-[#c9a84c] transition-colors duration-300">
+          <h3 className="text-[#f5f0e8] text-2xl md:text-3xl font-light group-hover:text-[#c9a84c] transition-colors duration-300">
             {project.title}
           </h3>
         </div>
@@ -149,7 +149,7 @@ export default function Projects() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-[Cormorant_Variable] text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
+            className="text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
           >
             Projects
           </motion.h2>
