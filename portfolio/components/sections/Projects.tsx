@@ -12,6 +12,7 @@ import {
 import { projects } from "@/lib/data";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 import type { Project } from "@/lib/data";
+import { HiArrowUpRight } from "react-icons/hi2";
 
 const techIcons: Record<string, { icon: React.ReactElement; color: string }> = {
   "React":        { icon: <SiReact />,       color: "#61DAFB" },
@@ -60,7 +61,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </h3>
         </div>
 
-        <span className={`shrink-0 mt-1 px-3 py-1 text-[10px] tracking-[0.18em] uppercase border rounded-full ${statusColor[project.status]}`}>
+        <span className={`shrink-0 mt-1 px-3 py-1 text-[16px] tracking-[0.18em] uppercase border rounded-full ${statusColor[project.status]}`}>
           {statusLabel[project.status]}
         </span>
       </div>
@@ -77,10 +78,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           return (
             <span
               key={tag}
-              className="flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
+              className="flex items-center gap-1.5 text-[16px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
             >
               {tech && (
-                <span style={{ color: tech.color }} className="text-[12px] shrink-0">
+                <span style={{ color: tech.color }} className="text-[16px] shrink-0">
                   {tech.icon}
                 </span>
               )}
@@ -92,7 +93,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-2 border-t border-[#1e1e1e]">
-        <span className="text-[11px] tracking-[0.2em] text-[#555] uppercase">
+        <span className="text-[13px] tracking-[0.2em] text-[#555] uppercase">
           {project.year}
         </span>
 
@@ -102,7 +103,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] tracking-[0.18em] uppercase text-[#777] hover:text-[#c9a84c] transition-colors duration-300"
+              className="text-[13px] tracking-[0.18em] uppercase text-[#777] hover:text-[#c9a84c] transition-colors duration-300"
             >
               GitHub
             </Link>
@@ -112,10 +113,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] tracking-[0.18em] uppercase text-[#c9a84c] hover:text-[#e8d5a3] transition-colors duration-300 flex items-center gap-1.5"
+              className="text-[13px] tracking-[0.18em] uppercase text-[#c9a84c] hover:text-[#e8d5a3] transition-colors duration-300 flex items-center gap-1.5"
             >
               Visit
-              <span className="text-base leading-none">↗</span>
+              <HiArrowUpRight className="w-3 h-3" />
             </Link>
           )}
         </div>
@@ -142,7 +143,7 @@ export default function Projects() {
         <div>
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
             <span className="block h-px w-8 bg-[#c9a84c]" />
-            <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
+            <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
               Selected work
             </span>
           </motion.div>
@@ -157,7 +158,7 @@ export default function Projects() {
 
         <motion.span
           variants={fadeUp}
-          className="text-[#666] text-[11px] tracking-[0.2em] uppercase"
+          className="text-[#666] text-[13px] tracking-[0.2em] uppercase"
         >
           {projects.length} projects
         </motion.span>

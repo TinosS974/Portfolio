@@ -58,7 +58,7 @@ export default function Navbar() {
               <li key={link.label}>
                 
                   <a href={link.href}
-                  className="text-[#666] text-[11px] tracking-[0.2em] uppercase hover:text-[#c9a84c] transition-colors duration-300"
+                  className="text-[#666] text-[13px] tracking-[0.2em] uppercase hover:text-[#c9a84c] transition-colors duration-300"
                 >
                   {link.label}
                 </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-10 text-[#444] text-[11px] tracking-[0.2em] uppercase"
+              className="absolute bottom-10 text-[#444] text-[13px] tracking-[0.2em] uppercase"
             >
               {about.email}
             </motion.span>

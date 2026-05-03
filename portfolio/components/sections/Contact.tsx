@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { HiArrowUpRight } from "react-icons/hi2";
 import { about } from "@/lib/data";
 import { staggerContainer, fadeUp, fadeIn, expandLine } from "@/lib/motion";
 
@@ -32,7 +33,7 @@ export default function Contact() {
       >
         <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
           <span className="block h-px w-8 bg-[#c9a84c]" />
-          <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
+          <span className="text-[#c9a84c] text-[16px] tracking-[0.28em] uppercase">
             Contact
           </span>
         </motion.div>
@@ -58,7 +59,7 @@ export default function Contact() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[#888] text-[13px] leading-[1.9] tracking-[0.02em] max-w-sm"
+            className="text-[#888] text-[16px] leading-[1.9] tracking-[0.02em] max-w-sm"
           >
             Open to freelance missions, full-time roles or one-off collaborations.
             Feel free to reach out.
@@ -66,7 +67,7 @@ export default function Contact() {
 
           {/* Email */}
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#555]">
+            <span className="text-[16px] tracking-[0.22em] uppercase text-[#555]">
               Email
             </span>
             <div className="flex items-center gap-4 flex-wrap">
@@ -75,7 +76,7 @@ export default function Contact() {
               </span>
               <button
                 onClick={handleCopyEmail}
-                className="text-[10px] tracking-[0.2em] uppercase border border-[#2a2a2a] px-3 py-1.5 text-[#666] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
+                className="text-[16px] tracking-[0.2em] uppercase border border-[#2a2a2a] px-3 py-1.5 text-[#666] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
               >
                 {copied ? "Copied ✓" : "Copy"}
               </button>
@@ -99,12 +100,10 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e1e] last:border-b-0 group hover:bg-[#0f0f0f] transition-colors duration-300"
                   >
-                    <span className="text-[11px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    <span className="text-[13px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
                       {link.label}
                     </span>
-                    <span className="text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300">
-                      ↗
-                    </span>
+                    <HiArrowUpRight className="w-3.5 h-3.5 text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300" />
                   </Link>
                 </motion.div>
               ) : null
@@ -114,89 +113,85 @@ export default function Contact() {
           {/* Status */}
           <motion.div variants={fadeUp} className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-            <span className="text-[10px] tracking-[0.22em] uppercase text-[#666]">
+            <span className="text-[16px] tracking-[0.22em] uppercase text-[#666]">
               Available · Paris, France · Remote friendly
             </span>
           </motion.div>
         </motion.div>
 
         {/* Droite — citation avec lumière orbitale */}
-<motion.div
-  variants={staggerContainer}
-  initial="hidden"
-  animate={inView ? "visible" : "hidden"}
-  className="flex flex-col justify-end"
->
-  {/* Citation */}
-  <motion.div variants={fadeUp} className="flex flex-col">
-    <motion.div
-      variants={expandLine}
-      className="w-12 h-px bg-[#c9a84c] mb-8"
-    />
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="flex flex-col justify-end"
+        >
+          <motion.div variants={fadeUp} className="flex flex-col">
+            <motion.div
+              variants={expandLine}
+              className="w-12 h-px bg-[#c9a84c] mb-8"
+            />
 
-    <div className="relative inline-block">
-      {/* Halo principal */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: "120px",
-          height: "120px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(201,168,76,0.6) 0%, transparent 70%)",
-          filter: "blur(30px)",
-          top: "50%",
-          left: "50%",
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          x: ["0%", "80%", "60%", "-60%", "-80%", "0%"],
-          y: ["0%", "60%", "-80%", "-60%", "40%", "0%"],
-          opacity: [0.6, 0.9, 0.5, 0.8, 0.6, 0.6],
-          scale: [1, 1.3, 0.9, 1.2, 1, 1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+            <div className="relative inline-block">
+              <motion.div
+                className="absolute pointer-events-none"
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  borderRadius: "50%",
+                  background: "radial-gradient(circle, rgba(201,168,76,0.6) 0%, transparent 70%)",
+                  filter: "blur(30px)",
+                  top: "50%",
+                  left: "50%",
+                  translateX: "-50%",
+                  translateY: "-50%",
+                }}
+                animate={{
+                  x: ["0%", "80%", "60%", "-60%", "-80%", "0%"],
+                  y: ["0%", "60%", "-80%", "-60%", "40%", "0%"],
+                  opacity: [0.6, 0.9, 0.5, 0.8, 0.6, 0.6],
+                  scale: [1, 1.3, 0.9, 1.2, 1, 1],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
 
-      {/* Halo secondaire */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: "80px",
-          height: "80px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(232,213,163,0.4) 0%, transparent 70%)",
-          filter: "blur(20px)",
-          top: "50%",
-          left: "50%",
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          x: ["0%", "-80%", "-60%", "60%", "80%", "0%"],
-          y: ["0%", "-60%", "80%", "60%", "-40%", "0%"],
-          opacity: [0.4, 0.7, 0.3, 0.6, 0.4, 0.4],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-      />
+              <motion.div
+                className="absolute pointer-events-none"
+                style={{
+                  width: "80px",
+                  height: "80px",
+                  borderRadius: "50%",
+                  background: "radial-gradient(circle, rgba(232,213,163,0.4) 0%, transparent 70%)",
+                  filter: "blur(20px)",
+                  top: "50%",
+                  left: "50%",
+                  translateX: "-50%",
+                  translateY: "-50%",
+                }}
+                animate={{
+                  x: ["0%", "-80%", "-60%", "60%", "80%", "0%"],
+                  y: ["0%", "-60%", "80%", "60%", "-40%", "0%"],
+                  opacity: [0.4, 0.7, 0.3, 0.6, 0.4, 0.4],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
 
-      {/* Texte */}
-      <motion.p
-        variants={fadeUp}
-        className="text-[36px] md:text-[48px] font-light italic leading-[1.1] relative z-10"
-        style={{
-          color: "#c9a84c",
-          textShadow: "0 0 20px rgba(201,168,76,0.3)",
-        }}
-      >
-        Build clean.<br />
-        Ship fast.<br />
-        Care about<br />
-        the details.
-      </motion.p>
-    </div>
-  </motion.div>
-</motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="text-[36px] md:text-[48px] font-light italic leading-[1.1] relative z-10"
+                style={{
+                  color: "#c9a84c",
+                  textShadow: "0 0 20px rgba(201,168,76,0.3)",
+                }}
+              >
+                Build clean.<br />
+                Ship fast.<br />
+                Care about<br />
+                the details.
+              </motion.p>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Footer */}
@@ -211,17 +206,16 @@ export default function Contact() {
           className="text-[#555] text-lg tracking-[0.14em] uppercase"
         >
           {about.initials}
-        </motion.span>            
+        </motion.span>
         <motion.span
           variants={fadeIn}
-          className="text-[10px] tracking-[0.18em] uppercase text-[#555]"
+          className="text-[16px] tracking-[0.18em] uppercase text-[#555]"
         >
           © {new Date().getFullYear()} {about.name}
         </motion.span>
-
         <motion.span
           variants={fadeIn}
-          className="text-[10px] tracking-[0.18em] uppercase text-[#555]"
+          className="text-[16px] tracking-[0.18em] uppercase text-[#555]"
         >
           Paris · La Réunion
         </motion.span>

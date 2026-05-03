@@ -31,7 +31,7 @@ export default function Experiences() {
         >
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
             <span className="block h-px w-8 bg-[#c9a84c]" />
-            <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
+            <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
               Background
             </span>
           </motion.div>
@@ -70,7 +70,7 @@ export default function Experiences() {
 
                 {/* Contenu */}
                 <div className="flex flex-col gap-3 pb-2">
-                  <span className="text-[10px] tracking-[0.22em] uppercase text-[#666]">
+                  <span className="text-[16px] tracking-[0.22em] uppercase text-[#666]">
                     {exp.period}
                   </span>
 
@@ -79,11 +79,11 @@ export default function Experiences() {
                       {exp.role}
                     </h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[12px] tracking-[0.12em] text-[#888]">
+                      <span className="text-[16px] tracking-[0.12em] text-[#888]">
                         {exp.company}
                       </span>
                       <span className="text-[#444]">·</span>
-                      <span className="text-[12px] tracking-[0.12em] text-[#777]">
+                      <span className="text-[16px] tracking-[0.12em] text-[#777]">
                         {exp.location}
                       </span>
                     </div>
@@ -95,7 +95,7 @@ export default function Experiences() {
 
                   <ul className="flex flex-col gap-1.5">
                     {exp.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[12px] text-[#777] leading-[1.7]">
+                      <li key={i} className="flex items-start gap-3 text-[16px] text-[#777] leading-[1.7]">
                         <span className="text-[#c9a84c] mt-[5px] shrink-0 text-[8px]">◆</span>
                         {h}
                       </li>
@@ -106,7 +106,7 @@ export default function Experiences() {
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
+                        className="text-[16px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
                       >
                         {tag}
                       </span>
@@ -127,7 +127,7 @@ export default function Experiences() {
             {/* Education label */}
             <motion.div variants={fadeIn} className="flex items-center gap-3 mb-6">
               <span className="block h-px w-6 bg-[#333]" />
-              <span className="text-[#666] text-[10px] tracking-[0.28em] uppercase">
+              <span className="text-[#666] text-[16px] tracking-[0.28em] uppercase">
                 Education
               </span>
             </motion.div>
@@ -142,20 +142,20 @@ export default function Experiences() {
                   <h4 className="text-lg font-light text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors duration-300 leading-snug">
                     {edu.school}
                   </h4>
-                  <span className="text-[10px] tracking-[0.15em] text-[#666] uppercase shrink-0 mt-1">
+                  <span className="text-[16px] tracking-[0.15em] text-[#666] uppercase shrink-0 mt-1">
                     {edu.period}
                   </span>
                 </div>
 
-                <p className="text-[12px] tracking-[0.06em] text-[#c9a84c] font-light">
+                <p className="text-[16px] tracking-[0.06em] text-[#c9a84c] font-light">
                   {edu.degree}
                 </p>
 
-                <p className="text-[12px] text-[#777] leading-[1.75]">
+                <p className="text-[16px] text-[#777] leading-[1.75]">
                   {edu.description}
                 </p>
 
-                <span className="text-[10px] tracking-[0.18em] uppercase text-[#555]">
+                <span className="text-[16px] tracking-[0.18em] uppercase text-[#555]">
                   {edu.location}
                 </span>
               </motion.div>
@@ -165,7 +165,7 @@ export default function Experiences() {
             <motion.div variants={fadeUp} className="mt-8">
               <div className="flex items-center gap-3 mb-5">
                 <span className="block h-px w-6 bg-[#333]" />
-                <span className="text-[#666] text-[10px] tracking-[0.28em] uppercase">
+                <span className="text-[#666] text-[16px] tracking-[0.28em] uppercase">
                   Skills
                 </span>
               </div>
@@ -173,10 +173,10 @@ export default function Experiences() {
               <div className="flex flex-col gap-4">
                 {skillCategories.map((cat) => (
                   <motion.div key={cat.label} variants={fadeUp}>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-[#c9a84c] block mb-1.5">
+                    <span className="text-[16px] tracking-[0.2em] uppercase text-[#c9a84c] block mb-1.5">
                       {cat.label}
                     </span>
-                    <p className="text-[11px] text-[#777] leading-[1.7]">
+                    <p className="text-[13px] text-[#777] leading-[1.7]">
                       {cat.items.join(" · ")}
                     </p>
                   </motion.div>

@@ -33,7 +33,7 @@ export default function Home() {
             {/* Eyebrow */}
             <motion.div variants={slideLeft} className="flex items-center gap-3 mb-16">
               <motion.span variants={expandLine} className="block h-px w-8 bg-[#c9a84c]" />
-              <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
+              <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
                 Based in Paris · From La Réunion
               </span>
             </motion.div>
@@ -54,7 +54,7 @@ export default function Home() {
                   { label: "TypeScript", gold: false },
                   { label: "React · Node.js", gold: false },
                   { label: "Framer Motion", gold: true },
-                  { label: "PostgreSQL · Docker", gold: false },
+                  { label: "Django · PostgreSQL", gold: false },
                 ].map((tech) => (
                   <p
                     key={tech.label}
@@ -80,13 +80,13 @@ export default function Home() {
             {/* Bio + CTA */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
               <motion.div variants={fadeUp} className="max-w-lg">
-                <p className="text-[#c8c0b0] text-[14px] leading-[1.9] tracking-[0.02em] mb-3">
+                <p className="text-[#c8c0b0] text-[16px] leading-[1.9] tracking-[0.02em] mb-3">
                   {about.bio[0]}
                 </p>
-                <p className="text-[#555] text-[12px] leading-[1.9] tracking-[0.02em]">
+                <p className="text-[#555] text-[16px] leading-[1.9] tracking-[0.02em]">
                   {about.bio[1]}
                 </p>
-                <p className="text-[#555] text-[12px] leading-[1.9] tracking-[0.02em]">
+                <p className="text-[#555] text-[16px] leading-[1.9] tracking-[0.02em]">
                   {about.bio[2]}
                 </p>
               </motion.div>
@@ -94,13 +94,13 @@ export default function Home() {
               <motion.div variants={fadeUp} className="flex items-center gap-5 flex-wrap shrink-0">
                 <Link
                   href="#projects"
-                  className="px-7 py-3 bg-[#c9a84c] text-[#0a0a0a] text-[11px] tracking-[0.22em] uppercase hover:bg-[#e8d5a3] transition-colors duration-300"
+                  className="px-7 py-3 bg-[#c9a84c] text-[#0a0a0a] text-[13px] tracking-[0.22em] uppercase hover:bg-[#e8d5a3] transition-colors duration-300"
                 >
                   View work
                 </Link>
                 <Link
                   href="#contact"
-                  className="px-7 py-3 border border-[#2a2a2a] text-[#666] text-[11px] tracking-[0.22em] uppercase hover:border-[#c9a84c44] hover:text-[#c9a84c] transition-all duration-300"
+                  className="px-7 py-3 border border-[#2a2a2a] text-[#666] text-[13px] tracking-[0.22em] uppercase hover:border-[#c9a84c44] hover:text-[#c9a84c] transition-all duration-300"
                 >
                   Get in touch
                 </Link>
@@ -117,14 +117,14 @@ export default function Home() {
               {about.interests.map((interest) => (
                 <span
                   key={interest}
-                  className="text-[10px] tracking-[0.22em] uppercase text-[#333] border border-[#1a1a1a] px-3 py-1.5"
+                  className="text-[16px] tracking-[0.22em] uppercase text-[#333] border border-[#1a1a1a] px-3 py-1.5"
                 >
                   {interest}
                 </span>
               ))}
             </div>
 
-            <div className="flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase text-[#444]">
+            <div className="flex items-center gap-2 text-[16px] tracking-[0.16em] uppercase text-[#444]">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
               Available for projects
             </div>
