@@ -119,14 +119,14 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
               <motion.div variants={fadeUp} className="max-w-lg">
                 {/* Paragraphe principal — bien visible */}
-                <p className="text-[#b8b0a0] text-[15px] leading-[1.9] tracking-[0.02em] mb-4">
+                <p className="text-[#e8e0d5] text-[15px] leading-[1.9] tracking-[0.02em] mb-4">
                   {about.bio[0]}
                 </p>
                 {/* Paragraphes secondaires — hiérarchie claire mais lisibles */}
-                <p className="text-[#666] text-[14px] leading-[1.9] tracking-[0.02em] mb-2">
+                <p className="text-[#a09888] text-[14px] leading-[1.9] tracking-[0.02em] mb-2">
                   {about.bio[1]}
                 </p>
-                <p className="text-[#666] text-[14px] leading-[1.9] tracking-[0.02em]">
+                <p className="text-[#907860] text-[14px] leading-[1.9] tracking-[0.02em]">
                   {about.bio[2]}
                 </p>
               </motion.div>
