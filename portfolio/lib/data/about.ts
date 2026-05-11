@@ -24,5 +24,5 @@ export const about = {
     testing: ["Playwright", "E2E", "Functional testing"],
     methods: ["Agile SCRUM", "Jira", "Notion", "Confluence"],
   },
-  interests: ["Badminton", "Music", "Sustainable development"],
+  interests: ["Badminton (Regional level)", "Music", "Sustainable development"],
 };

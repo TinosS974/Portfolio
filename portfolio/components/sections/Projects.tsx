@@ -1,49 +1,60 @@
-"use client";
+'use client'
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import Link from "next/link";
+import { useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import Link from 'next/link'
 import {
   SiReact, SiVite, SiTailwindcss, SiDaisyui,
   SiNodedotjs, SiExpress, SiSpotify,
   SiNextdotjs, SiPrisma, SiVercel, SiShadcnui,
   SiGithub, SiTypescript,
-} from "react-icons/si";
-import { projects } from "@/lib/data";
-import { staggerContainer, fadeUp } from "@/lib/motion";
-import type { Project } from "@/lib/data";
-import { HiArrowUpRight } from "react-icons/hi2";
+} from 'react-icons/si'
+import { projects } from '@/lib/data'
+import { staggerContainer, fadeUp } from '@/lib/motion'
+import type { Project } from '@/lib/data'
+import { HiArrowUpRight } from 'react-icons/hi2'
+import ProjectModal from '@/components/ProjectModal'
 
 const techIcons: Record<string, { icon: React.ReactElement; color: string }> = {
-  "React":        { icon: <SiReact />,       color: "#61DAFB" },
-  "Vite":         { icon: <SiVite />,        color: "#646CFF" },
-  "Tailwind":     { icon: <SiTailwindcss />, color: "#06B6D4" },
-  "Tailwind CSS": { icon: <SiTailwindcss />, color: "#06B6D4" },
-  "DaisyUI":      { icon: <SiDaisyui />,     color: "#FF9903" },
-  "Node.js":      { icon: <SiNodedotjs />,   color: "#339933" },
-  "Express":      { icon: <SiExpress />,     color: "#888"    },
-  "Spotify API":  { icon: <SiSpotify />,     color: "#1DB954" },
-  "Next.js":      { icon: <SiNextdotjs />,   color: "#f5f0e8" },
-  "Prisma":       { icon: <SiPrisma />,      color: "#2D3748" },
-  "Vercel":       { icon: <SiVercel />,      color: "#f5f0e8" },
-  "GitHub OAuth": { icon: <SiGithub />,      color: "#f5f0e8" },
-  "shadcn/ui":    { icon: <SiShadcnui />,    color: "#f5f0e8" },
-  "TypeScript":   { icon: <SiTypescript />,  color: "#3178C6" },
-};
+  'React':        { icon: <SiReact />,       color: '#61DAFB' },
+  'Vite':         { icon: <SiVite />,        color: '#646CFF' },
+  'Tailwind':     { icon: <SiTailwindcss />, color: '#06B6D4' },
+  'Tailwind CSS': { icon: <SiTailwindcss />, color: '#06B6D4' },
+  'DaisyUI':      { icon: <SiDaisyui />,     color: '#FF9903' },
+  'Node.js':      { icon: <SiNodedotjs />,   color: '#339933' },
+  'Express':      { icon: <SiExpress />,     color: '#888'    },
+  'Spotify API':  { icon: <SiSpotify />,     color: '#1DB954' },
+  'Next.js':      { icon: <SiNextdotjs />,   color: '#f5f0e8' },
+  'Prisma':       { icon: <SiPrisma />,      color: '#2D3748' },
+  'Vercel':       { icon: <SiVercel />,      color: '#f5f0e8' },
+  'GitHub OAuth': { icon: <SiGithub />,      color: '#f5f0e8' },
+  'shadcn/ui':    { icon: <SiShadcnui />,    color: '#f5f0e8' },
+  'TypeScript':   { icon: <SiTypescript />,  color: '#3178C6' },
+}
 
-const statusLabel: Record<Project["status"], string> = {
-  live: "Live",
-  wip: "In progress",
-  archived: "Archived",
-};
+const statusLabel: Record<Project['status'], string> = {
+  live:     'Live',
+  wip:      'In progress',
+  archived: 'Archived',
+}
 
-const statusColor: Record<Project["status"], string> = {
-  live: "text-green-500 border-green-500/20 bg-green-500/5",
-  wip: "text-[#c9a84c] border-[#c9a84c33] bg-[#c9a84c08]",
-  archived: "text-[#666] border-[#2a2a2a] bg-transparent",
-};
+const statusColor: Record<Project['status'], string> = {
+  live:     'text-green-500 border-green-500/20 bg-green-500/5',
+  wip:      'text-[#c9a84c] border-[#c9a84c33] bg-[#c9a84c08]',
+  archived: 'text-[#666] border-[#2a2a2a] bg-transparent',
+}
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  onOpen,
+}: {
+  project: Project
+  index: number
+  onOpen: () => void
+}) {
+  const hasDetails = !!(project.images?.length || project.longDescription)
+
   return (
     <motion.article
       variants={fadeUp}
@@ -54,14 +65,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1.5">
           <span className="text-[#333] text-4xl font-light leading-none select-none">
-            {String(index + 1).padStart(2, "0")}
+            {String(index + 1).padStart(2, '0')}
           </span>
           <h3 className="text-[#f5f0e8] text-2xl md:text-3xl font-light group-hover:text-[#c9a84c] transition-colors duration-300">
             {project.title}
           </h3>
         </div>
 
-        <span className={`shrink-0 mt-1 px-3 py-1 text-[16px] tracking-[0.18em] uppercase border rounded-full ${statusColor[project.status]}`}>
+        <span className={`shrink-0 mt-1 px-3 py-1 text-[10px] tracking-[0.18em] uppercase border rounded-full ${statusColor[project.status]}`}>
           {statusLabel[project.status]}
         </span>
       </div>
@@ -74,20 +85,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => {
-          const tech = techIcons[tag];
+          const tech = techIcons[tag]
           return (
             <span
               key={tag}
-              className="flex items-center gap-1.5 text-[16px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
+              className="flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase text-[#777] border border-[#2a2a2a] px-2.5 py-1"
             >
               {tech && (
-                <span style={{ color: tech.color }} className="text-[16px] shrink-0">
+                <span style={{ color: tech.color }} className="text-[13px] shrink-0">
                   {tech.icon}
                 </span>
               )}
               {tag}
             </span>
-          );
+          )
         })}
       </div>
 
@@ -104,11 +115,25 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[13px] tracking-[0.18em] uppercase text-[#777] hover:text-[#c9a84c] transition-colors duration-300"
+              onClick={e => e.stopPropagation()}
             >
               GitHub
             </Link>
           )}
-          {project.href && (
+
+          {/* Bouton View details — seulement si images ou longDescription */}
+          {hasDetails && (
+            <button
+              onClick={onOpen}
+              className="text-[13px] tracking-[0.18em] uppercase text-[#c9a84c] hover:text-[#e8d5a3] transition-colors duration-300 flex items-center gap-1.5"
+            >
+              View details
+              <HiArrowUpRight className="w-3 h-3" />
+            </button>
+          )}
+
+          {/* Visit direct si pas de details mais un href */}
+          {!hasDetails && project.href && (
             <Link
               href={project.href}
               target="_blank"
@@ -125,55 +150,73 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Hover line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-[#c9a84c] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
     </motion.article>
-  );
+  )
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const [selected, setSelected] = useState<Project | null>(null)
 
   return (
-    <section id="projects" ref={ref} className="px-6 md:px-16 lg:px-24 py-16 md:py-20 border-t border-[#141414]">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        className="flex items-end justify-between mb-10 gap-4 flex-wrap"
+    <>
+      <section
+        id="projects"
+        ref={ref}
+        className="px-6 md:px-16 lg:px-24 py-16 md:py-20 border-t border-[#141414]"
       >
-        <div>
-          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-            <span className="block h-px w-8 bg-[#c9a84c]" />
-            <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
-              Selected work
-            </span>
-          </motion.div>
-
-          <motion.h2
-            variants={fadeUp}
-            className="text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
-          >
-            Projects
-          </motion.h2>
-        </div>
-
-        <motion.span
-          variants={fadeUp}
-          className="text-[#666] text-[13px] tracking-[0.2em] uppercase"
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="flex items-end justify-between mb-10 gap-4 flex-wrap"
         >
-          {projects.length} projects
-        </motion.span>
-      </motion.div>
+          <div>
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
+              <span className="block h-px w-8 bg-[#c9a84c]" />
+              <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
+                Selected work
+              </span>
+            </motion.div>
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#141414] items-stretch"
-      >
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-      </motion.div>
-    </section>
-  );
+            <motion.h2
+              variants={fadeUp}
+              className="text-[44px] md:text-[56px] font-light leading-[0.95] text-[#f5f0e8]"
+            >
+              Projects
+            </motion.h2>
+          </div>
+
+          <motion.span
+            variants={fadeUp}
+            className="text-[#666] text-[13px] tracking-[0.2em] uppercase"
+          >
+            {projects.length} projects
+          </motion.span>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#141414] items-stretch"
+        >
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              onOpen={() => setSelected(project)}
+            />
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Modale — montée au niveau root pour éviter les z-index conflicts */}
+      <ProjectModal
+        project={selected}
+        onClose={() => setSelected(null)}
+      />
+    </>
+  )
 }
