@@ -70,7 +70,7 @@ export const experiences: Experience[] = [
     period: "2023",
     location: "La Réunion",
     description:
-      "Internship — full redesign of an internal business application.",
+      "6 month Internship — full redesign of an internal business application.",
     highlights: [
       "User needs gathering and full application redesign",
       "Proposed and modernized the technology stack",
@@ -86,7 +86,7 @@ export const experiences: Experience[] = [
     period: "2021",
     location: "La Réunion",
     description:
-      "Internship — development of a purchase order generation tool.",
+      "6 month Internship — development of a purchase order generation tool.",
     highlights: [
       "Automated a manual purchase order generation process",
       "Web development JS / phpMyAdmin: input form, PDF generation, data management",

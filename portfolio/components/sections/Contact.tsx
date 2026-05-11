@@ -3,9 +3,11 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { HiArrowUpRight } from "react-icons/hi2";
+import { HiArrowUpRight, HiArrowDownTray } from "react-icons/hi2";
 import { about } from "@/lib/data";
 import { staggerContainer, fadeUp, fadeIn, expandLine } from "@/lib/motion";
+
+const CV_PATH = "/CV_Raphael_Salaverria_FullStack__.pdf";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -33,7 +35,7 @@ export default function Contact() {
       >
         <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
           <span className="block h-px w-8 bg-[#c9a84c]" />
-          <span className="text-[#c9a84c] text-[16px] tracking-[0.28em] uppercase">
+          <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
             Contact
           </span>
         </motion.div>
@@ -59,7 +61,7 @@ export default function Contact() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[#888] text-[16px] leading-[1.9] tracking-[0.02em] max-w-sm"
+            className="text-[#888] text-[14px] leading-[1.9] tracking-[0.02em] max-w-sm"
           >
             Open to freelance missions, full-time roles or one-off collaborations.
             Feel free to reach out.
@@ -67,53 +69,80 @@ export default function Contact() {
 
           {/* Email */}
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
-            <span className="text-[16px] tracking-[0.22em] uppercase text-[#555]">
+            <span className="text-[10px] tracking-[0.22em] uppercase text-[#555]">
               Email
             </span>
             <div className="flex items-center gap-4 flex-wrap">
-              <span className="text-2xl font-light text-[#f5f0e8]">
+              <span className="text-xl font-light text-[#f5f0e8]">
                 {about.email}
               </span>
               <button
                 onClick={handleCopyEmail}
-                className="text-[16px] tracking-[0.2em] uppercase border border-[#2a2a2a] px-3 py-1.5 text-[#666] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
+                className="text-[10px] tracking-[0.2em] uppercase border border-[#2a2a2a] px-3 py-1.5 text-[#666] hover:border-[#c9a84c33] hover:text-[#c9a84c] transition-all duration-300"
               >
                 {copied ? "Copied ✓" : "Copy"}
               </button>
             </div>
           </motion.div>
 
-          {/* Socials */}
+          {/* Liens + CV dans le même bloc bordé */}
           <motion.div
             variants={staggerContainer}
             className="flex flex-col border border-[#1e1e1e]"
           >
-            {[
-              { label: "LinkedIn", href: about.social.linkedin },
-              { label: "GitHub", href: about.social.github },
-            ].map((link) =>
-              link.href ? (
-                <motion.div key={link.label} variants={fadeIn}>
-                  <Link
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e1e] last:border-b-0 group hover:bg-[#0f0f0f] transition-colors duration-300"
-                  >
-                    <span className="text-[13px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
-                      {link.label}
-                    </span>
-                    <HiArrowUpRight className="w-3.5 h-3.5 text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300" />
-                  </Link>
-                </motion.div>
-              ) : null
+            {/* LinkedIn */}
+            {about.social.linkedin && (
+              <motion.div variants={fadeIn}>
+                <Link
+                  href={about.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e1e] group hover:bg-[#0f0f0f] transition-colors duration-300"
+                >
+                  <span className="text-[11px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    LinkedIn
+                  </span>
+                  <HiArrowUpRight className="w-3.5 h-3.5 text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300" />
+                </Link>
+              </motion.div>
             )}
+
+            {/* GitHub */}
+            {about.social.github && (
+              <motion.div variants={fadeIn}>
+                <Link
+                  href={about.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e1e] group hover:bg-[#0f0f0f] transition-colors duration-300"
+                >
+                  <span className="text-[11px] tracking-[0.2em] uppercase text-[#666] group-hover:text-[#c9a84c] transition-colors duration-300">
+                    GitHub
+                  </span>
+                  <HiArrowUpRight className="w-3.5 h-3.5 text-[#444] group-hover:text-[#c9a84c] transition-colors duration-300" />
+                </Link>
+              </motion.div>
+            )}
+
+            {/* CV download — dernier élément du bloc, mis en valeur */}
+            <motion.div variants={fadeIn}>
+              <a
+                href={CV_PATH}
+                download
+                className="flex items-center justify-between px-5 py-4 group hover:bg-[#c9a84c08] transition-colors duration-300"
+              >
+                <span className="text-[11px] tracking-[0.2em] uppercase text-[#c9a84c] group-hover:text-[#e8d5a3] transition-colors duration-300">
+                  Télécharger mon CV
+                </span>
+                <HiArrowDownTray className="w-3.5 h-3.5 text-[#c9a84c] group-hover:text-[#e8d5a3] transition-colors duration-300" />
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* Status */}
           <motion.div variants={fadeUp} className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-            <span className="text-[16px] tracking-[0.22em] uppercase text-[#666]">
+            <span className="text-[11px] tracking-[0.22em] uppercase text-[#555]">
               Available · Paris, France · Remote friendly
             </span>
           </motion.div>
@@ -201,22 +230,13 @@ export default function Contact() {
         animate={inView ? "visible" : "hidden"}
         className="mt-20 pt-8 border-t border-[#141414] flex items-center justify-between flex-wrap gap-4"
       >
-        <motion.span
-          variants={fadeIn}
-          className="text-[#555] text-lg tracking-[0.14em] uppercase"
-        >
+        <motion.span variants={fadeIn} className="text-[#555] text-sm tracking-[0.14em] uppercase">
           {about.initials}
         </motion.span>
-        <motion.span
-          variants={fadeIn}
-          className="text-[16px] tracking-[0.18em] uppercase text-[#555]"
-        >
+        <motion.span variants={fadeIn} className="text-[11px] tracking-[0.18em] uppercase text-[#555]">
           © {new Date().getFullYear()} {about.name}
         </motion.span>
-        <motion.span
-          variants={fadeIn}
-          className="text-[16px] tracking-[0.18em] uppercase text-[#555]"
-        >
+        <motion.span variants={fadeIn} className="text-[11px] tracking-[0.18em] uppercase text-[#555]">
           Paris · La Réunion
         </motion.span>
       </motion.div>

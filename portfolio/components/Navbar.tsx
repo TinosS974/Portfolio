@@ -3,24 +3,26 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { about } from "@/lib/data";
+import { HiArrowDownTray } from "react-icons/hi2";
 
 const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects",    href: "#projects"    },
+  { label: "Experience",  href: "#experience"  },
+  { label: "Contact",     href: "#contact"     },
 ];
 
+const CV_PATH = "/CV_Raphael_Salaverria_FullStack__.pdf";
+
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Ferme le menu si on resize vers desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setMenuOpen(false);
@@ -44,54 +46,55 @@ export default function Navbar() {
         }`}
       >
         <nav className="flex items-center justify-between px-6 md:px-10 py-5">
-          {/* Logo / Initiales */}
-          
-            <a href="#"
+
+          {/* Logo */}
+          <a
+            href="#"
             className="text-[#c9a84c] text-lg tracking-[0.14em] uppercase font-light hover:opacity-70 transition-opacity duration-300"
           >
             {about.initials}
           </a>
 
-          {/* Links — desktop */}
-          <ul className="hidden md:flex gap-8 list-none">
+          {/* Links + CV — desktop */}
+          <ul className="hidden md:flex items-center gap-8 list-none">
             {navLinks.map((link) => (
               <li key={link.label}>
-                
-                  <a href={link.href}
-                  className="text-[#666] text-[13px] tracking-[0.2em] uppercase hover:text-[#c9a84c] transition-colors duration-300"
+                <a
+                  href={link.href}
+                  className="text-[#666] text-[11px] tracking-[0.2em] uppercase hover:text-[#c9a84c] transition-colors duration-300"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
+
+            {/* CV — visuellement distinct des autres liens */}
+            <li>
+              <a
+                href={CV_PATH}
+                download
+                className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-[#c9a84c] border border-[#c9a84c33] px-3 py-1.5 hover:bg-[#c9a84c12] hover:border-[#c9a84c66] transition-all duration-300"
+              >
+                CV
+                <HiArrowDownTray className="w-3 h-3" />
+              </a>
+            </li>
           </ul>
 
           {/* Burger — mobile */}
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="md:hidden flex flex-col gap-[5px] p-1 group"
+            className="md:hidden flex flex-col gap-[5px] p-1"
             aria-label="Toggle menu"
           >
-            <span
-              className={`block h-px w-6 bg-[#666] transition-all duration-300 origin-center ${
-                menuOpen ? "rotate-45 translate-y-[7px] bg-[#c9a84c]" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-6 bg-[#666] transition-all duration-300 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-6 bg-[#666] transition-all duration-300 origin-center ${
-                menuOpen ? "-rotate-45 -translate-y-[7px] bg-[#c9a84c]" : ""
-              }`}
-            />
+            <span className={`block h-px w-6 bg-[#666] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[7px] bg-[#c9a84c]" : ""}`} />
+            <span className={`block h-px w-6 bg-[#666] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-6 bg-[#666] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[7px] bg-[#c9a84c]" : ""}`} />
           </button>
         </nav>
       </motion.header>
 
-      {/* Menu mobile — fullscreen overlay */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -105,11 +108,11 @@ export default function Navbar() {
             <div
               className="absolute top-0 left-0 right-0 h-px"
               style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, #c9a84c 30%, #e8d5a3 60%, transparent 100%)",
+                background: "linear-gradient(90deg, transparent 0%, #c9a84c 30%, #e8d5a3 60%, transparent 100%)",
               }}
             />
 
+            {/* Liens nav */}
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.label}
@@ -124,12 +127,26 @@ export default function Navbar() {
               </motion.a>
             ))}
 
+            {/* CV — séparé visuellement dans le menu mobile aussi */}
+            <motion.a
+              href={CV_PATH}
+              download
+              onClick={handleLinkClick}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-2 text-[#c9a84c] border border-[#c9a84c33] px-6 py-3 text-[13px] tracking-[0.22em] uppercase hover:bg-[#c9a84c12] transition-all duration-300"
+            >
+              Télécharger mon CV
+              <HiArrowDownTray className="w-4 h-4" />
+            </motion.a>
+
             {/* Email en bas */}
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-10 text-[#444] text-[13px] tracking-[0.2em] uppercase"
+              className="absolute bottom-10 text-[#444] text-[11px] tracking-[0.2em] uppercase"
             >
               {about.email}
             </motion.span>
