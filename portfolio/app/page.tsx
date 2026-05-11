@@ -8,11 +8,56 @@ import Projects from "@/components/sections/Projects";
 import Experiences from "@/components/sections/Experiences";
 import Contact from "@/components/sections/Contact";
 
+// Techs — plus de gold/non-gold, on gère le style via le composant animé
+const techStack = [
+  "Next.js",
+  "TypeScript",
+  "React · Node.js",
+  "Framer Motion",
+  "Django · PostgreSQL",
+];
+
 export default function Home() {
   return (
     <>
+      {/* Styles injectés pour l'animation de vague — plus léger qu'une lib externe */}
+      <style>{`
+        @keyframes waveShift {
+          0%   { background-position: 0% 50%;   }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%;   }
+        }
+
+        .tech-wave {
+          background: linear-gradient(
+            90deg,
+            #2a2a2a 0%,
+            #2a2a2a 30%,
+            #c9a84c 50%,
+            #e8d5a3 60%,
+            #c9a84c 70%,
+            #2a2a2a 90%,
+            #2a2a2a 100%
+          );
+          background-size: 250% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          animation: waveShift 5s ease-in-out infinite;
+          /* Chaque ligne décalée pour que la vague se propage de haut en bas */
+        }
+
+        .tech-wave-1 { animation-delay: 0s;    }
+        .tech-wave-2 { animation-delay: 0.3s;  }
+        .tech-wave-3 { animation-delay: 0.6s;  }
+        .tech-wave-4 { animation-delay: 0.9s;  }
+        .tech-wave-5 { animation-delay: 1.2s;  }
+      `}</style>
+
       <main className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
 
+        {/* Ligne dorée top */}
         <motion.div
           variants={expandLine}
           initial="hidden"
@@ -33,7 +78,7 @@ export default function Home() {
             {/* Eyebrow */}
             <motion.div variants={slideLeft} className="flex items-center gap-3 mb-16">
               <motion.span variants={expandLine} className="block h-px w-8 bg-[#c9a84c]" />
-              <span className="text-[#c9a84c] text-[13px] tracking-[0.28em] uppercase">
+              <span className="text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase">
                 Based in Paris · From La Réunion
               </span>
             </motion.div>
@@ -48,21 +93,14 @@ export default function Home() {
                 </h1>
               </motion.div>
 
+              {/* Stack avec vague animée */}
               <motion.div variants={fadeUp} className="lg:text-right pb-2 shrink-0 max-w-xs">
-                {[
-                  { label: "Next.js", gold: true },
-                  { label: "TypeScript", gold: false },
-                  { label: "React · Node.js", gold: false },
-                  { label: "Framer Motion", gold: true },
-                  { label: "Django · PostgreSQL", gold: false },
-                ].map((tech) => (
+                {techStack.map((label, i) => (
                   <p
-                    key={tech.label}
-                    className={`text-[22px] md:text-[26px] leading-[1.4] font-light ${
-                      tech.gold ? "text-[#c9a84c]" : "text-[#2e2e2e]"
-                    }`}
+                    key={label}
+                    className={`tech-wave tech-wave-${i + 1} text-[22px] md:text-[26px] leading-[1.4] font-light`}
                   >
-                    {tech.label}
+                    {label}
                   </p>
                 ))}
               </motion.div>
@@ -80,13 +118,15 @@ export default function Home() {
             {/* Bio + CTA */}
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
               <motion.div variants={fadeUp} className="max-w-lg">
-                <p className="text-[#c8c0b0] text-[16px] leading-[1.9] tracking-[0.02em] mb-3">
+                {/* Paragraphe principal — bien visible */}
+                <p className="text-[#b8b0a0] text-[15px] leading-[1.9] tracking-[0.02em] mb-4">
                   {about.bio[0]}
                 </p>
-                <p className="text-[#555] text-[16px] leading-[1.9] tracking-[0.02em]">
+                {/* Paragraphes secondaires — hiérarchie claire mais lisibles */}
+                <p className="text-[#666] text-[14px] leading-[1.9] tracking-[0.02em] mb-2">
                   {about.bio[1]}
                 </p>
-                <p className="text-[#555] text-[16px] leading-[1.9] tracking-[0.02em]">
+                <p className="text-[#666] text-[14px] leading-[1.9] tracking-[0.02em]">
                   {about.bio[2]}
                 </p>
               </motion.div>
@@ -94,13 +134,13 @@ export default function Home() {
               <motion.div variants={fadeUp} className="flex items-center gap-5 flex-wrap shrink-0">
                 <Link
                   href="#projects"
-                  className="px-7 py-3 bg-[#c9a84c] text-[#0a0a0a] text-[13px] tracking-[0.22em] uppercase hover:bg-[#e8d5a3] transition-colors duration-300"
+                  className="px-7 py-3 bg-[#c9a84c] text-[#0a0a0a] text-[11px] tracking-[0.22em] uppercase hover:bg-[#e8d5a3] transition-colors duration-300"
                 >
                   View work
                 </Link>
                 <Link
                   href="#contact"
-                  className="px-7 py-3 border border-[#2a2a2a] text-[#666] text-[13px] tracking-[0.22em] uppercase hover:border-[#c9a84c44] hover:text-[#c9a84c] transition-all duration-300"
+                  className="px-7 py-3 border border-[#2a2a2a] text-[#666] text-[11px] tracking-[0.22em] uppercase hover:border-[#c9a84c44] hover:text-[#c9a84c] transition-all duration-300"
                 >
                   Get in touch
                 </Link>
@@ -117,14 +157,14 @@ export default function Home() {
               {about.interests.map((interest) => (
                 <span
                   key={interest}
-                  className="text-[16px] tracking-[0.22em] uppercase text-[#333] border border-[#1a1a1a] px-3 py-1.5"
+                  className="text-[10px] tracking-[0.22em] uppercase text-[#333] border border-[#1a1a1a] px-3 py-1.5"
                 >
                   {interest}
                 </span>
               ))}
             </div>
 
-            <div className="flex items-center gap-2 text-[16px] tracking-[0.16em] uppercase text-[#444]">
+            <div className="flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase text-[#444]">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
               Available for projects
             </div>
