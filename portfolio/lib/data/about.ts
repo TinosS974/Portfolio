@@ -25,4 +25,26 @@ export const about = {
     methods: ["Agile SCRUM", "Jira", "Notion", "Confluence"],
   },
   interests: ["Badminton (Regional level)", "Music", "Sustainable development"],
+  approachIntro:
+    "Beyond writing code, I bring the habits of a structured, collaborative team and a real product mindset.",
+  approach: [
+    {
+      title: "Agile & collaborative",
+      description:
+        "I work the Agile / Scrum way — sprints, code reviews, clean git workflows and CI/CD. Reviewed, well-tested code is the default, not an afterthought.",
+      tags: ["Scrum", "Code review", "CI/CD"],
+    },
+    {
+      title: "Fast learner, highly adaptable",
+      description:
+        "I've worked across many tools, stacks and contexts, from tourism to public sector, HR and publishing. New environment, new framework — I get productive fast.",
+      tags: ["Adaptable", "Curious", "Autonomous"],
+    },
+    {
+      title: "Technical & product minded",
+      description:
+        "My project-management background gives me a dual hat: I grasp business needs and stakeholders, then translate them into clean, working software.",
+      tags: ["Product", "Business needs", "Delivery"],
+    },
+  ],
 };

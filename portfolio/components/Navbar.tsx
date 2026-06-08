@@ -6,6 +6,7 @@ import { about } from "@/lib/data";
 import { HiArrowDownTray } from "react-icons/hi2";
 
 const navLinks = [
+  { label: "Approach",    href: "#approach"    },
   { label: "Projects",    href: "#projects"    },
   { label: "Experience",  href: "#experience"  },
   { label: "Contact",     href: "#contact"     },

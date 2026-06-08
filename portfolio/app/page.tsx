@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { fadeUp, fadeIn, staggerContainer, slideLeft, expandLine } from "@/lib/motion";
 import { about } from "@/lib/data";
 import Projects from "@/components/sections/Projects";
+import Approach from "@/components/sections/Approach";
 import Experiences from "@/components/sections/Experiences";
 import Contact from "@/components/sections/Contact";
 
@@ -83,26 +85,77 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* Nom + stack */}
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-              <motion.div variants={fadeUp}>
-                <h1 className="text-[72px] md:text-[96px] lg:text-[120px] leading-[0.88] font-black text-[#f5f0e8]">
+            {/* Nom + portrait + stack */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_360px] gap-10 lg:gap-14 items-center mb-14">
+              {/* Identité */}
+              <motion.div variants={fadeUp} className="min-w-0">
+                <h1 className="text-[64px] sm:text-[80px] md:text-[96px] lg:text-[84px] xl:text-[104px] leading-[0.88] font-black text-[#f5f0e8]">
                   {about.name.split(" ")[0]}
                   <br />
                   <span className="italic text-[#c9a84c]">{about.name.split(" ")[1]}</span>
                 </h1>
               </motion.div>
 
-              {/* Stack avec vague animée */}
-              <motion.div variants={fadeUp} className="lg:text-right pb-2 shrink-0 max-w-xs">
-                {techStack.map((label, i) => (
-                  <p
-                    key={label}
-                    className={`tech-wave tech-wave-${i + 1} text-[22px] md:text-[26px] leading-[1.4] font-light`}
+              {/* Portrait + stack */}
+              <motion.div variants={fadeUp} className="flex flex-col items-center lg:items-end gap-7">
+                {/* Portrait */}
+                <div className="group relative w-[230px] sm:w-[270px] lg:w-full max-w-[360px]">
+                  {/* Halo doré chaud — chaleur derrière la photo */}
+                  <div
+                    aria-hidden
+                    className="absolute -inset-6 -z-10 blur-3xl opacity-50"
+                    style={{
+                      background:
+                        "radial-gradient(circle at 50% 35%, rgba(201,168,76,0.28), transparent 70%)",
+                    }}
+                  />
+
+                  {/* Ligne dorée top — rappel du motif éditorial */}
+                  <motion.span
+                    variants={expandLine}
+                    className="absolute -top-3 left-0 right-0 h-px"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #c9a84c 0%, #e8d5a3 40%, transparent 100%)",
+                    }}
+                  />
+
+                  {/* Photo — fond noir fondu dans le bg du site */}
+                  <div
+                    className="relative aspect-square overflow-hidden grayscale-[14%] group-hover:grayscale-0 transition-[filter] duration-700"
+                    style={{
+                      WebkitMaskImage:
+                        "linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%)",
+                      maskImage:
+                        "linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%)",
+                    }}
                   >
-                    {label}
-                  </p>
-                ))}
+                    <Image
+                      src="/photo_pro_black_bg.webp"
+                      alt={about.name}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 270px, 360px"
+                      className="object-cover object-top scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
+                    />
+                  </div>
+
+                  {/* Accents de coin haut-gauche */}
+                  <span className="absolute top-0 left-0 w-5 h-px bg-[#c9a84c66]" />
+                  <span className="absolute top-0 left-0 w-px h-5 bg-[#c9a84c66]" />
+                </div>
+
+                {/* Stack avec vague animée */}
+                <div className="text-center lg:text-right w-full max-w-[360px]">
+                  {techStack.map((label, i) => (
+                    <p
+                      key={label}
+                      className={`tech-wave tech-wave-${i + 1} text-[18px] md:text-[20px] leading-[1.5] font-light`}
+                    >
+                      {label}
+                    </p>
+                  ))}
+                </div>
               </motion.div>
             </div>
 
@@ -173,6 +226,7 @@ export default function Home() {
 
       </main>
 
+      <Approach />
       <Projects />
       <Experiences />
       <Contact />
